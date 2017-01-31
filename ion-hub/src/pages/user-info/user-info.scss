@@ -1,0 +1,15 @@
+page-user-info {
+ .hireable{
+     background-color:color($colors, secondary, base)
+ }
+ .not-hireable{
+     background-color:color($colors, danger, base)
+ }
+ .user{
+    &__pic{
+        height: 30px;
+        width: 30px;
+        border-radius: 100px;
+    }
+}
+}

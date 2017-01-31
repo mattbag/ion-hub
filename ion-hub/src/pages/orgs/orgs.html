@@ -1,0 +1,39 @@
+<!--
+  Generated template for the Orgs page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Orgs</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <ion-card *ngFor="let org of orgs">
+
+  <ion-card-header>
+   <h2>{{org.login}}</h2>
+  </ion-card-header>
+
+  <ion-card-content>
+    <p>{{org.description}}</p>
+    <ion-list>
+      <button ion-item *ngFor="let repo of orgs.events_url">
+        {{repo.org.login}}
+      </button>
+    </ion-list>
+  </ion-card-content>
+
+</ion-card>
+
+</ion-content>
+

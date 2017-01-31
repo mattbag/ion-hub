@@ -1,0 +1,40 @@
+import { Injectable } from '@angular/core';
+import { Http } from '@angular/http';
+import { Observable } from 'rxjs/Rx';
+import 'rxjs/add/operator/map';
+
+import { User } from '../models/user';
+import { Repo } from '../models/repo';
+/*
+  Generated class for the GithubUsers provider.
+
+  See https://angular.io/docs/ts/latest/guide/dependency-injection.html
+  for more info on providers and Angular 2 DI.
+*/
+@Injectable()
+export class GithubUsers {
+  githubApiUrl = 'https://api.github.com';
+
+  constructor(public http: Http) { }
+
+  // Load all github users
+  load(): Observable<User[]> {
+    return this.http.get(`${this.githubApiUrl}/search/users?q=followers:>1000`)
+      .map(res => <User[]>res.json().items);
+  }
+  // load user info
+  loadInfo(login: string): Observable<User> {
+    return this.http.get(`${this.githubApiUrl}/users/${login}`)
+      .map(res => <User>(res.json()))
+  }
+  searchUsers(searchParams: string): Observable<User[]>{
+     return this.http.get(`${this.githubApiUrl}/search/users?q=${searchParams}`)
+      .map(res => <User[]>res.json().items);
+  }
+  // load user repos
+   loadUserRepos(login: string): Observable<Repo[]> {
+    return this.http.get(`${this.githubApiUrl}/users/${login}/repos`)
+      .map(res => <Repo[]>(res.json()))
+  }
+  
+}

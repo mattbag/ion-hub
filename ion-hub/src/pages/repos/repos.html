@@ -1,0 +1,61 @@
+<!--
+  Generated template for the Repos page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Repos</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="bg-black">
+  <ion-searchbar (input)="search($event)" (ionClear)="onCancel($event)"></ion-searchbar>
+  <!--<ion-searchbar (input)="search($event)"></ion-searchbar>-->
+  <ion-card *ngFor="let repo of inf_repos">
+    <ion-card-header>
+     <ion-row wrap>
+        <ion-col width-expand>
+          <ion-card-title>
+            <a href="{{repo.html_url}}" target="_blank">{{repo.name}}</a>
+          </ion-card-title>
+        </ion-col>
+        </ion-row>
+        <ion-row>
+
+        <ion-col width-50 text-center>
+          <button ion-button icon-left clear small>
+        <ion-icon name="star-outline"></ion-icon>
+        <div>{{repo.stargazers_count}}</div>
+      </button>
+        </ion-col>
+        <ion-col width-50 text-center>
+          <button ion-button icon-left clear small>
+        <ion-icon name="git-branch"></ion-icon>
+        <div>{{repo.forks_url.length}}</div>
+      </button>
+        </ion-col>
+      </ion-row>
+  </ion-card-header>
+    <ion-card-content>
+     
+
+        <p>
+          {{repo.description}}
+        </p>
+        <p>- Author: {{repo.owner.login}}</p>
+
+    </ion-card-content>
+
+  </ion-card>
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles"></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

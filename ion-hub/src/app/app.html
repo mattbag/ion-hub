@@ -1,0 +1,25 @@
+<ion-menu [content]="content">
+
+  <ion-header>
+    <ion-toolbar>
+       
+      <ion-title>Github Explorer</ion-title>
+     <ion-buttons end>
+      <button ion-button icon-only color="primary">
+        <ion-icon name="logo-github"></ion-icon>
+      </button>
+    </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list>
+      <button ion-item *ngFor="let p of pages" (click)="openPage(p)">
+        {{p.title}}
+      </button>
+    </ion-list>
+  </ion-content>
+
+</ion-menu>
+
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
