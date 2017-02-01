@@ -20,18 +20,27 @@ originalUsers: User[];
   constructor(public navCtrl: NavController, private githubUsers: GithubUsers) {
     githubUsers.load().subscribe(users =>{
       
-      this.users = users;
+      // this.users = users;
       this.originalUsers = users;
-  //     this.users.sort( function(name1, name2) {
-	//     if ( name1.login < name2.login ){
-	//     	return -1;
-	//     }else if( name1.login > name2.login ){
-	//         return 1;
-	//     }else{
-	//     	return 0;	
-	//     }
-	// });
+
+      this.users = [];
+    for (let i = 0; i < 10; i++) {
+      this.users.push( users[i] );
+    }
     })
+  }
+  doInfinite(infiniteScroll) {
+    console.log('Begin async operation');
+
+    setTimeout(() => {
+      var inf_len = this.users.length;
+    for (let i = inf_len; i < inf_len+10; i++) {
+      this.users.push( this.users[i] );
+    }
+
+      console.log('Async operation has ended');
+      infiniteScroll.complete();
+    }, 500);
   }
   viewInfo(login: string){
     this.navCtrl.push(UserInfoPage, {login});
