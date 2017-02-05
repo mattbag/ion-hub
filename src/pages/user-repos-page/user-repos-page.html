@@ -30,7 +30,7 @@
   <ion-row>
     <ion-col>
       <button ion-button icon-left clear small (click)="changeIcon(repo)">
-        <ion-icon [name]="repo.starIcon"></ion-icon>
+        <ion-icon [name]="repo.starred ? 'star' : 'star-outline'"></ion-icon>
          <div>{{repo?.stargazers_count}}</div>
       </button>
       

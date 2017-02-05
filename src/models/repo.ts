@@ -11,4 +11,5 @@ export interface Repo {
     owner: any,
     stargazers_url: any,
     starIcon: string;
+    starred: boolean;
 }
