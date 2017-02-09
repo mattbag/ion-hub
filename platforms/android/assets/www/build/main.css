@@ -27102,6 +27102,10 @@ sub {
   border-radius: 100px;
 }
 
+page-trends .item-ios, page-trends .item-md, page-trends .item-wp {
+  padding-left: 8px;
+}
+
 page-user-info .hireable {
   background-color: #8FFF58;
 }
